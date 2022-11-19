@@ -1,0 +1,15 @@
+// needs to be imported on every scss file :(
+// it makes sense but wtf
+
+// see "pages/_app.js" for main font family
+// font-family: var(--main-font);
+
+$font-color: #d0d5f2 !default;
+$bg-color: #1c1240 !default;
+$faded-bg-color: rgba(64,52,109,.6) !default;
+
+// Mixin because there's only one and I don't feel like
+// making a new file for 1 whole mixin
+@mixin edge-padding {
+    padding: 0 10px;
+}

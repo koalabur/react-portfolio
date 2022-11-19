@@ -1,0 +1,45 @@
+@import "/styles/_variables";
+
+.footer {
+    @include edge-padding;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(5rem + 1vw);
+
+    &__copyright {
+        font-family: var(--main-font);
+        color: $font-color;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    &__socials {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: .8rem;
+        &-link {
+            transition: 0.25s ease-in-out;
+            // Safari is stupid... can't use flex gap
+            margin-right: 1rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            &-icon {
+                width: calc(40px + 1vw);
+                height: calc(40px + 1vw);
+                fill: #d0d5f2;
+            }
+        }
+    }
+}

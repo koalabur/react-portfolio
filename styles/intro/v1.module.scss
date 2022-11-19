@@ -1,0 +1,110 @@
+@import "/styles/_variables";
+
+.intro {
+    margin-bottom: calc(40vh + 7rem);
+    display: grid;
+    align-items: center;
+    padding-top: 7rem;
+    background: #2a2773;
+    background: linear-gradient(180deg, #2a2773, #1c1240);
+    overflow: hidden;
+    @include edge-padding;
+
+    &__fg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        grid-area: 1 / 1 / 2 / 2;
+        z-index: 1;
+
+        &-img {
+            width: 423px;
+            height: 385px;
+        }
+
+        &-title {
+            font-family: "IBM Plex Sans", sans-serif;
+            color: #d0d5f2;
+            text-transform: lowercase;
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-left: 0.9rem;
+            padding-right: 0.9rem;
+        }
+
+        &-svg {
+            filter: invert(87%) sepia(4%) saturate(1432%) hue-rotate(196deg)
+                brightness(99%) contrast(91%);
+            width: calc(4rem + 0.8vw);
+            height: auto;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            padding-left: 0.9rem;
+            padding-right: 0.9rem;
+            -webkit-animation: bounceAnimation 2s ease 0s infinite alternate
+                forwards;
+            animation: bounceAnimation 2s ease 0s infinite alternate forwards;
+        }
+    }
+
+    &__bg {
+        grid-area: 1 / 1 / 2 / 2;
+        margin-left: auto;
+
+        &-svg {
+            opacity: 0.2;
+            margin-left: 50%;
+        }
+    }
+}
+
+@keyframes bounceAnimation {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 1;
+        transform: translateY(-45px);
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    40% {
+        animation-timing-function: ease-in;
+        transform: translateY(-24px);
+    }
+
+    65% {
+        animation-timing-function: ease-in;
+        transform: translateY(-12px);
+    }
+
+    82% {
+        animation-timing-function: ease-in;
+        transform: translateY(-6px);
+    }
+
+    93% {
+        animation-timing-function: ease-in;
+        transform: translateY(-4px);
+    }
+
+    25%,
+    55%,
+    75%,
+    87% {
+        animation-timing-function: ease-out;
+        transform: translateY(0px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
