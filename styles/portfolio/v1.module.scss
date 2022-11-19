@@ -7,6 +7,15 @@
     margin-bottom: 10rem;
     @include edge-padding;
 
+    &__index {
+        font-family: var(--main-font);
+        text-align: center;
+        color: $font-color;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
     &__row {
         display: flex;
         align-items: center;
@@ -21,26 +30,33 @@
             border: none;
             width: calc(2rem + 1vw);
             height: calc(2rem + 1vw);
-            fill: rgb(255, 255, 255, 0.85);
+            fill: rgba(208, 213, 242, .8);
             transition: 0.25s ease-in-out;
             cursor: pointer;
             border-radius: 50%;
-            border: 1px solid black;
-            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid $faded-bg-color;
+            background: $faded-bg-color;
             position: absolute;
             z-index: 1;
 
             &:hover {
-                fill: rgb(255, 255, 255, 1);
-                background: rgba(0, 0, 0, 1);
+                fill: $font-color;
             }
 
             &--left {
-                left: 0;
+                left: -60px;
+
+                @media (max-width: 992px) {
+                    left: 0;
+                }
             }
 
             &--right {
-                right: 0;
+                right: -60px;
+
+                @media (max-width: 992px) {
+                    right: 0;
+                }
             }
         }
 
@@ -133,5 +149,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 2.5rem;
+        text-align: center;
     }
 }

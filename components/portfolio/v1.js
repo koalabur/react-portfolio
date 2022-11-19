@@ -34,6 +34,7 @@ export default function PortfolioSection() {
     return (
         <section id="portfolio" className={styles.portfolio}>
             <h1 className={styles.portfolio__title}>&lt; portfolio /&gt;</h1>
+            <p className={styles.portfolio__index}>{current + 1}/{portfolio.length}</p>
             <div className={styles.portfolio__row}>
                 <PortfolioItems />
                 <button
