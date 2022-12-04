@@ -20,13 +20,6 @@ export default function AboutSection() {
         );
     });
 
-    const skillsItems = skills.map((item, index) => {
-        return (
-            // Loop through AboutItems component
-            <SkillsItems key={index} item={item} />
-        );
-    });
-
     return (
         <section id="about" className={styles.about}>
             <div className={styles.about__title}>
@@ -85,7 +78,7 @@ export default function AboutSection() {
             </div>
             <div className={styles["about__skills"]}>
                 {/* Using skillsItems from map not component */}
-                {skillsItems}
+                <SkillsItems />
             </div>
         </section>
     );
