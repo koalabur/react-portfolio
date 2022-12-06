@@ -12,6 +12,16 @@ export default [
     },
     {
         id: 2,
+        url: "https://treydesignsthings.com/",
+        img: {
+            src: "trey-desktop.jpg",
+            alt: "Trey Designs Things"
+        },
+        title: "trey designs things",
+        tools: ["wordpress"]
+    },
+    {
+        id: 3,
         url: "https://rumlynjules.com/",
         img: {
             src: "rj-desktop.png",
@@ -21,7 +31,7 @@ export default [
         tools: ["wordpress"]
     },
     {
-        id: 3,
+        id: 4,
         url: "https://radicallycurly.com/",
         img: {
             src: "rc-desktop.jpg",
@@ -31,7 +41,7 @@ export default [
         tools: ["wordpress"]
     },
     {
-        id: 4,
+        id: 5,
         url: "https://www.dancexpresslv.com/",
         img: {
             src: "dxp-desktop.jpg",
@@ -41,7 +51,7 @@ export default [
         tools: ["wordpress"]
     },
     {
-        id: 5,
+        id: 6,
         url: "https://www.qualityliquidatorslv.com/",
         img: {
             src: "qllv-desktop.jpg",
@@ -51,7 +61,7 @@ export default [
         tools: ["wordpress"]
     },
     {
-        id: 6,
+        id: 7,
         url: "https://dianadmarie.net/",
         img: {
             src: "ddm-desktop.jpg",
