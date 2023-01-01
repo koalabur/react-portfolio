@@ -11,7 +11,7 @@ export default function AboutItems(props) {
     return (
         <div className={styles["about__highlights-col"]}>
             <Image
-                src={`/img/${props.item.icon.img}`}
+                src={`${props.item.icon.img}`}
                 alt={props.item.icon.alt}
                 width={props.item.icon.width}
                 height={props.item.icon.height}

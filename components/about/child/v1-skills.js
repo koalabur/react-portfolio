@@ -1,38 +1,30 @@
-import { useState, useEffect } from "react";
+// React
+import { useState } from "react";
 
-import { db } from "/firebase.config.js";
-import { collection, getDocs } from "firebase/firestore";
+// Hook
+import { useGetDoc } from "../../../hooks/useGetFirestore";
 
+// Styles
 import styles from "/styles/about/v1.module.scss";
 
 // Loops through about items from parent
 export default function AboutItems() {
-    const [skillsData, setSkillsData] = useState([]);
-    const skillsDb = collection(db, "skills");
+  const [skillsData, setSkillsData] = useState([]);
 
-    useEffect(() => {
-        const getSkills = async () => {
-            try {
-                const data = await getDocs(skillsDb);
-                const newData = data.docs.map((doc) => ({ ...doc.data() }));
-                setSkillsData(newData[0].items);
-            } catch {
-                console.warn("Data couldn't be fetched from firebase");
-            }
-        };
+  useGetDoc("skills", "CJgN52ThCOph1d71Skt6", setSkillsData);
 
-        getSkills();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+  if (skillsData.length === 0) {
+    return;
+  } else {
     // Do the loop thing
-    const skillsItems = skillsData.map((item) => {
-        return (
-            <p className={styles["about__skills-item"]} key={item}>
-                {item}
-            </p>
-        );
+    const skillsItems = skillsData.items.map((item) => {
+      return (
+        <p className={styles["about__skills-item"]} key={item}>
+          {item}
+        </p>
+      );
     });
 
     return <>{skillsItems}</>;
+  }
 }

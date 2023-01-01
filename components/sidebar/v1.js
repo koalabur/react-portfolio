@@ -1,15 +1,15 @@
 import Image from "next/image";
 
 // Style
-import styles from "/styles/externalLinks/v1.module.scss";
+import styles from "/styles/sidebar/v1.module.scss";
 
 // Data
-import data from "/data/externalLinks/v1";
+import data from "/data/sidebar/v1";
 
-export default function ExternalLinks() {
+export default function sidebar() {
     return (
-        <div className={styles.externalLinks}>
-            <p className={styles.externalLinks__text}>other <br />portfolios</p>
+        <aside className={styles.sidebar}>
+            <p className={styles.sidebar__text}>other <br />portfolios</p>
             {data.map((item) => {
                 return (
                     <a
@@ -20,11 +20,11 @@ export default function ExternalLinks() {
                         // Append the alt tag from mapped data and keep
                         // the id generated from the module
                         className={`
-                            ${styles["externalLinks__link"]} ${styles["externalLinks__link" + "-" + item.icon.alt ]}
+                            ${styles["sidebar__link"]} ${styles["sidebar__link" + "-" + item.icon.alt ]}
                         `}
                     >
                         <Image
-                            className={styles["externalLinks__link-icon"]}
+                            className={styles["sidebar__link-icon"]}
                             src={item.icon.src}
                             alt={item.icon.alt}
                             width={25}
@@ -33,6 +33,6 @@ export default function ExternalLinks() {
                     </a>
                 );
             })}
-        </div>
+        </aside>
     );
 }

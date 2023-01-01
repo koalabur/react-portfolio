@@ -1,0 +1,125 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 11;
+  background: $faded-purple;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px 5px;
+  transition: 0.25s ease-in-out;
+  max-height: 100%;
+
+  &--inactive {
+    max-height: #{fluid(55px, 65px)};
+    margin-top: 2.6rem;
+  }
+  &__close {
+    width: #{fluid(35px, 45px)};
+    height: #{fluid(35px, 45px)};
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 3px;
+    transition: 0.25s ease-in-out;
+    border-radius: 10px;
+    animation: pulse 10s alternate infinite;
+
+    @keyframes pulse {
+      0% {
+        border: 1px solid rgba(255, 255, 255, 0);
+      }
+      96% {
+        border: 1px solid rgba(255, 255, 255, 0);
+      }
+      100% {
+        border: 1px solid rgba(255, 255, 255, 1);
+      }
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+  &__title {
+    color: $purple;
+    background: $font-color;
+    font-family: $main-font;
+    font-size: $sidebar-text-size;
+    margin-top: #{fluid(20px, 30px)};
+    margin-bottom: #{fluid(10px, 14px)};
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__item {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: #{fluid(5px, 16px)};
+
+    &-link {
+      margin-bottom: 5px;
+      transition: 0.25s ease-in-out;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: #{fluid(6px, 10px)};
+
+      &:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+      }
+      &--github &-icon {
+        transition: 0s;
+      }
+      &--github:hover {
+        background: $github-grey;
+      }
+      &--github:hover &-icon {
+        filter: invert(100%) sepia(0%) saturate(3284%) hue-rotate(225deg)
+          brightness(111%) contrast(92%);
+      }
+      &--linkedin:hover {
+        background: $linkedin-grey;
+      }
+      &--linkedin:hover &-icon {
+        filter: invert(28%) sepia(91%) saturate(1322%) hue-rotate(175deg)
+          brightness(97%) contrast(101%);
+      }
+      &--vue:hover {
+        background: $vue-blue;
+      }
+      &--vue:hover &-icon {
+        filter: invert(74%) sepia(7%) saturate(4234%) hue-rotate(98deg)
+          brightness(90%) contrast(63%);
+      }
+      &--wordpress:hover {
+        background: $wordpress-grey;
+      }
+      &--wordpress:hover &-icon {
+        filter: invert(23%) sepia(57%) saturate(3360%) hue-rotate(176deg)
+          brightness(101%) contrast(103%);
+      }
+      &-icon {
+        filter: invert(98%) sepia(89%) saturate(5457%) hue-rotate(179deg)
+          brightness(102%) contrast(90%);
+        display: flex;
+        align-items: center;
+        text-align: center;
+        transition: 0.25s ease-in-out;
+      }
+    }
+    &-title {
+      font-family: $main-font;
+      color: $font-color;
+      width: 100%;
+      text-align: center;
+      font-size: $sidebar-text-size;
+    }
+  }
+}
