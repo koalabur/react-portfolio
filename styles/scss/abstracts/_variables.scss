@@ -1,0 +1,20 @@
+// see "pages/_app.js" for main font family
+// font-family: var(--main-font);
+$main-font: var(--main-font) !default;
+
+$purple: #1c1240 !default;
+$faded-purple: rgba(64, 52, 109, 0.6) !default;
+$font-color: #d0d5f2 !default;
+$vue-green: #41b883 !default;
+$vue-blue: #34495e !default;
+$vue-white: rgba(255, 255, 255, 0.87) !default;
+$react-blue: #61dafb !default;
+$react-grey: #20232a !default;
+$wordpress-blue: #00749c !default;
+$wordpress-grey: #444140 !default;
+$linkedin-blue: #0077b5 !default;
+$linkedin-grey: #313335 !default;
+$github-white: #f5f5f5 !default;
+$github-grey: #333 !default;
+
+$sidebar-text-size: #{fluid(10px, 14px)};
