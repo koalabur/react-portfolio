@@ -18,8 +18,6 @@ export function useInterObs(sectionRef, setState) {
         // setState(entry.isIntersecting ? sectionRef.current.id : "");
       },
       {
-        // Mobile adjustments
-        rootMargin: "-100px",
         threshold: 0,
       }
     );
