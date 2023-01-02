@@ -1,23 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 
 // Component import
 import PortfolioItems from "/components/portfolio/child/v1.js";
 
 // Context
-import { CurrentSlideContext } from "./context/v1";
+import { AppContext } from "../../context/GlobalState";
 
 // Hook
 import { useGetCol } from "../../hooks/useGetFirestore";
+import { useInterObs } from "../../hooks/useIntersectionObs";
 
 // Style import
 import styles from "/styles/portfolio/v1.module.scss";
 
 export default function PortfolioSection() {
-  // Get state from app
-  const { current, setCurrent } = useContext(CurrentSlideContext);
+  // Global state
+  const { slide, setSlide, section, setSection } = useContext(AppContext);
+
+  // Local state
   const [portfolio, setPortfolio] = useState([]);
 
+  const portfolioRef = useRef();
+
+  // Get collection from firestore
   useGetCol("portfolio", setPortfolio);
+
+  // When #portfolio section is active, highlight in nav
+  useInterObs(portfolioRef, setSection, 0.5);
 
   // Length of imported data array
   const length = portfolio.length;
@@ -25,20 +34,20 @@ export default function PortfolioSection() {
   function nextSlide() {
     // if current slide is equal to the length of the array then reset to 0
     // else + 1 and do normal thingy
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setSlide(slide === length - 1 ? 0 : slide + 1);
   }
 
   function prevSlide() {
     // if current slide is equal to 0 (first slide) then go to the end
     // else - 1 and do normal thingy
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setSlide(slide === 0 ? length - 1 : slide - 1);
   }
 
   return (
-    <section id="portfolio" className={styles.portfolio}>
+    <section id="portfolio" className={styles.portfolio} ref={portfolioRef}>
       <h1 className={styles.portfolio__title}>&lt; portfolio /&gt;</h1>
       <p className={styles.portfolio__index}>
-        {current + 1}/{portfolio.length}
+        {slide + 1}/{portfolio.length}
       </p>
       <div className={styles.portfolio__row}>
         <PortfolioItems />

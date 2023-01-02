@@ -2,8 +2,9 @@
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10rem;
   @include edge-padding;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
 
   &__index {
     font-family: $main-font;

@@ -41,6 +41,7 @@
       z-index: -1;
       transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
     }
+
     &:before {
       content: "";
       position: absolute;
@@ -50,16 +51,33 @@
       height: 100%;
       transition: opacity 0.3s, border 0.3s;
     }
-    &:hover {
+
+    &:hover, &:focus {
       color: $react-grey;
     }
-    &:hover::before {
+
+    &:hover::before, &:focus::before {
       opacity: 0;
     }
-    &:hover::after {
+
+    &:hover::after, &:focus::after {
       opacity: 1;
       transform-origin: 100px 100px;
       transform: scale(1) translate(-10px, -70px);
+    }
+
+    &--active {
+      color: $react-grey;
+
+      &::before {
+        opacity: 0;
+      }
+
+      &::after {
+        opacity: 1;
+        transform-origin: 100px 100px;
+        transform: scale(1) translate(-10px, -70px);
+      }
     }
   }
 }
