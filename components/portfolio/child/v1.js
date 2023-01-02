@@ -2,10 +2,10 @@
 import { useContext, useState } from "react";
 
 // Cloudinary import
-import { CldImage } from 'next-cloudinary';
+import { CldImage } from "next-cloudinary";
 
 // Context
-import { CurrentSlideContext } from "../context/v1";
+import { AppContext } from "../../../context/GlobalState";
 
 // Hook
 import { useGetCol } from "../../../hooks/useGetFirestore";
@@ -14,10 +14,10 @@ import { useGetCol } from "../../../hooks/useGetFirestore";
 import styles from "/styles/portfolio/v1.module.scss";
 
 export default function PortfolioItems() {
-  const { current } = useContext(CurrentSlideContext);
+  const { slide } = useContext(AppContext);
   const [portfolioData, setPortfolioData] = useState([]);
 
-  useGetCol("portfolio", setPortfolioData)
+  useGetCol("portfolio", setPortfolioData);
 
   return (
     <div className={styles["portfolio__row-carousel"]}>
@@ -29,7 +29,7 @@ export default function PortfolioItems() {
             // if index of mapped array is same as current slide from context then show active slide
             // else hide non-active slides
             className={
-              index === current
+              index === slide
                 ? `${styles["portfolio__row-item"]} ${styles["portfolio__row-item--active"]}`
                 : styles["portfolio__row-item"]
             }

@@ -1,5 +1,5 @@
 import React from "react";
-import { CurrentSlideContext } from "../components/portfolio/context/v1";
+import { AppContextProvider } from "../context/GlobalState";
 import "/styles/scss/globals.scss";
 
 import { IBM_Plex_Sans } from "@next/font/google";
@@ -13,13 +13,11 @@ const gfont = IBM_Plex_Sans({
 });
 
 function MyApp({ Component, pageProps }) {
-  const [current, setCurrent] = React.useState(0);
-
   return (
     <div className={gfont.variable}>
-      <CurrentSlideContext.Provider value={{ current, setCurrent }}>
+      <AppContextProvider>
         <Component {...pageProps} />
-      </CurrentSlideContext.Provider>
+      </AppContextProvider>
     </div>
   );
 }
