@@ -1,5 +1,5 @@
 // React imports
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 
 // Next imports
 import Image from "next/image";
@@ -20,7 +20,7 @@ import styles from "/styles/about/v1.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { setSection } = useContext(AppContext);
+  const { section, setSection } = useContext(AppContext);
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
@@ -31,7 +31,7 @@ export default function AboutSection() {
   useGetCol("about", setAboutData);
 
   // When #about section is active, send to global state
-  useInterObs(aboutRef, setSection);
+  useInterObs(aboutRef, setSection, 0.1);
 
   // Map and loop
   const aboutItems = aboutData.map((item) => {

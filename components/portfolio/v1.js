@@ -15,7 +15,7 @@ import styles from "/styles/portfolio/v1.module.scss";
 
 export default function PortfolioSection() {
   // Global state
-  const { slide, setSlide, setSection } = useContext(AppContext);
+  const { slide, setSlide, section, setSection } = useContext(AppContext);
 
   // Local state
   const [portfolio, setPortfolio] = useState([]);
@@ -26,7 +26,7 @@ export default function PortfolioSection() {
   useGetCol("portfolio", setPortfolio);
 
   // When #portfolio section is active, highlight in nav
-  useInterObs(portfolioRef, setSection);
+  useInterObs(portfolioRef, setSection, 0.5);
 
   // Length of imported data array
   const length = portfolio.length;

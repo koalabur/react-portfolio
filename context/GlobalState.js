@@ -24,6 +24,7 @@ export { AppContext, AppContextProvider };
 //* Usage
 
 // Context
+// Imported at top of file
 // import { AppContext } from "../../context/GlobalState";
 
 // Global state 
