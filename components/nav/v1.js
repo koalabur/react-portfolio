@@ -8,6 +8,7 @@ import { AppContext } from "../../context/GlobalState";
 
 export default function v1() {
   // Global state
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { section } = useContext(AppContext);
 
   function active(activeSection) {
