@@ -3,9 +3,11 @@ import { useEffect } from "react";
 export function useInterObs(sectionRef, setState) {
   // On Mount
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
+    // Create observer
+    const observer = new IntersectionObserver((entries) => {
+        // Give me ALL entries in observer (current 2)
         entries.forEach((entry) => {
+          // Timeout to prevent flickering when state updates
           setTimeout(() => {
             setState(entry.isIntersecting ? sectionRef.current.id : "");
           }, 350);
@@ -16,10 +18,13 @@ export function useInterObs(sectionRef, setState) {
         // setState(entry.isIntersecting ? sectionRef.current.id : "");
       },
       {
-        threshold: 0.5,
+        // Mobile adjustments
+        rootMargin: "-100px",
+        threshold: 0,
       }
     );
-
+    
+    // Init observer
     observer.observe(sectionRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
