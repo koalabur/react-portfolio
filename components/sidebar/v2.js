@@ -1,8 +1,11 @@
 // React
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 // Next
 import Image from "next/image";
+
+// Context
+import { AppContext } from "../../context/GlobalState";
 
 // Style
 import styles from "/styles/sidebar/v2.module.scss";
@@ -12,6 +15,7 @@ import { portfolios, socials } from "/data/sidebar/v2";
 
 export default function Sidebar() {
   const [sidebarActive, setSidebarActive] = useState(true);
+  const { isSiteReady } = useContext(AppContext);
 
   function sidebarToggle() {
     setSidebarActive((prevState) => !prevState);
@@ -28,9 +32,9 @@ export default function Sidebar() {
   // onMount, do the thing
   useEffect(() => {
     setTimeout(() => {
-      window.innerWidth < 1024 ? setSidebarActive(false) : null;
-    }, 500);
-  }, []);
+      window.innerWidth < 1024 && isSiteReady ? setSidebarActive(false) : null;
+    }, 1500);
+  }, [isSiteReady]);
 
   return (
     <aside
