@@ -5,14 +5,17 @@ const AppContext = createContext({
   setSlide: () => {},
   section: '',
   setSection: () => {},
+  isSiteReady: '',
+  setIsSiteReady: () => {}
 });
 
 const AppContextProvider = (props) => {
   const [slide, setSlide] = useState(0);
   const [section, setSection] = useState("");
+  const [isSiteReady, setIsSiteReady] = useState(false)
 
   return (
-    <AppContext.Provider value={{ slide, setSlide, section, setSection }}>
+    <AppContext.Provider value={{ slide, setSlide, section, setSection, isSiteReady, setIsSiteReady }}>
       {props.children}
     </AppContext.Provider>
   );
@@ -29,4 +32,4 @@ export { AppContext, AppContextProvider };
 
 // Global state 
 // Use same way you would local state
-// const { slide, setSlide, section, setSection } = useContext(AppContext);
+// const { slide, setSlide, section, setSection, isSiteReady, setIsSiteReady } = useContext(AppContext);

@@ -1,5 +1,5 @@
 // React imports
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 
 // Next imports
 import Image from "next/image";
@@ -20,7 +20,7 @@ import styles from "/styles/about/v1.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { section, setSection } = useContext(AppContext);
+  const { setSection } = useContext(AppContext);
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
