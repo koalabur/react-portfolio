@@ -94,7 +94,7 @@
     height: #{fluid(100px, 235px)};
     margin-bottom: #{fluid(20px, 35px)};
 
-    @include mobile-break {
+    @media (max-width: 320px) {
       display: none;
     }
   }
