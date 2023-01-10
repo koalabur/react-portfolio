@@ -7,7 +7,7 @@ API Ninja: API for random facts \
 GSAP: Scroll triggered animations \
 Intersction Observer API: Highlight nav links when section is in view \
 Context Hook: Create and share global state between components \
--- Usage: sending section ref to global state when it's in viewport then highlighting nav link of said section \
+-- Usage: sending section ref to global state when it's in viewport then highlighting nav link of said section
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
