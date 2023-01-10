@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AppContext } from "../context/GlobalState";
 
 // Components
-import PageLoading from "../components/pageLoading/v1";
+import PreLoader from "../components/preLoader/v1";
 import Sidebar from "../components/sidebar/v2";
 import Nav from "../components/nav/v1";
 import Intro from "../components/intro/v1";
@@ -45,7 +45,7 @@ export default function Home() {
               }}
               exit={{ opacity: 0, y: -100 }}
             >
-              <PageLoading />
+              <PreLoader />
             </motion.div>
           ) : null}
         </AnimatePresence>

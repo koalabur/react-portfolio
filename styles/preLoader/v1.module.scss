@@ -1,0 +1,162 @@
+.facts {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: $purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: 1s ease-in-out;
+  overflow: auto;
+  @include edge-padding;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    margin-top: #{fluid(20px, 40px)};
+
+    @include mobile-break {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px #{fluid(10px, 20px)};
+      border-radius: 8px;
+      border: none;
+      font-size: #{fluid(14px, 26px)};
+      cursor: pointer;
+      background-image: linear-gradient(
+        190deg,
+        rgba(175, 39, 242, 0.6),
+        rgba(64, 3, 254, 0.6)
+      );
+      font-family: $main-font;
+      color: $font-color;
+      transition: 0.25s ease-in-out;
+      text-align: center;
+      margin-right: 20px;
+
+      @include mobile-break {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.4);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &--hollow {
+        background: transparent;
+        border: 2px solid $font-color;
+      }
+
+      &-icon {
+        font-size: #{fluid(20px, 30px)};
+        margin-left: #{fluid(6px, 10px)};
+      }
+    }
+  }
+
+  &__fact {
+    border: 1px solid $font-color;
+    height: #{fluid(210px, 250px)};
+    width: #{fluid(600px, 1400px)};
+    display: flex;
+    justify-content: center;
+    @include mobile-break {
+      align-items: center;
+    }
+    &-text {
+      font-family: $main-font;
+      color: $font-color;
+      font-size: #{fluid(16px, 24px)};
+      text-align: left;
+      padding: #{fluid(5px, 10px)} #{fluid(10px, 40px)};
+    }
+  }
+
+  &__img {
+    width: #{fluid(100px, 235px)};
+    height: #{fluid(100px, 235px)};
+    margin-bottom: #{fluid(20px, 35px)};
+  }
+
+  &__title {
+    font-family: $main-font;
+    color: $font-color;
+    font-size: #{fluid(20px, 40px)};
+    margin-bottom: #{fluid(10px, 20px)};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-btns {
+      display: flex;
+      flex-direction: column;
+      margin-right: #{fluid(6px, 8px)};
+      margin-left: #{fluid(6px, 8px)};
+
+      &-trigger {
+        display: block;
+        background: transparent;
+        border: 1px solid $font-color;
+        font-family: $main-font;
+        font-weight: 800;
+        font-size: #{fluid(14px, 26px)};
+        color: $font-color;
+        padding: #{fluid(3px, 0px)} #{fluid(7px, 10px)};
+        margin-bottom: #{fluid(6px, 8px)};
+        cursor: pointer;
+        transition: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:hover,
+        &:focus {
+          background: $font-color;
+          color: $purple;
+        }
+
+        &:focus {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+
+  &__validate {
+    font-family: $main-font;
+    background: #cc0a00;
+    color: $font-color;
+    font-size: #{fluid(15px, 24px)};
+    transform: translateY(-100%);
+    max-height: 0;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease-in-out;
+
+    &--active {
+      max-height: 100%;
+      margin: #{fluid(7px, 10px)} 0;
+      padding: #{fluid(3px, 5px)} 5px;
+      opacity: 1;
+      visibility: visible !important;
+      transform: translateY(0);
+    }
+  }
+}
