@@ -144,7 +144,7 @@ export default function PreLoader() {
         ) : (
           <>
             <h1 className={styles.facts__title}>Did you know...</h1>
-            <p className={styles.facts__fact}>{facts[factNumber].fact}</p>
+            <p className={styles["facts__fact-text"]}>{facts[factNumber].fact}</p>
           </>
         )}
       </AnimatePresence>
@@ -174,7 +174,7 @@ export default function PreLoader() {
                   }
                   onClick={randomFact}
                 >
-                  Another Random Fact{" "}
+                  Another Random, Random Fact{" "}
                   <span className={styles["facts__row-btn-icon"]}>&#8693;</span>
                 </button>
               ) : null}

@@ -26,7 +26,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px #{fluid(10px, 20px)};
+      padding: #{fluid(7px, 10px)} #{fluid(10px, 20px)};
       border-radius: 8px;
       border: none;
       font-size: #{fluid(14px, 26px)};
@@ -63,7 +63,7 @@
       }
 
       &-icon {
-        font-size: #{fluid(20px, 30px)};
+        font-size: #{fluid(14px, 30px)};
         margin-left: #{fluid(6px, 10px)};
       }
     }
@@ -71,13 +71,15 @@
 
   &__fact {
     border: 1px solid $font-color;
-    height: #{fluid(210px, 250px)};
+    height: #{fluid(235px, 265px)};
     width: #{fluid(600px, 1400px)};
     display: flex;
     justify-content: center;
+
     @include mobile-break {
       align-items: center;
     }
+
     &-text {
       font-family: $main-font;
       color: $font-color;
@@ -91,6 +93,10 @@
     width: #{fluid(100px, 235px)};
     height: #{fluid(100px, 235px)};
     margin-bottom: #{fluid(20px, 35px)};
+
+    @include mobile-break {
+      display: none;
+    }
   }
 
   &__title {
