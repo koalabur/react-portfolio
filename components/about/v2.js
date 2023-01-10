@@ -41,16 +41,19 @@ export default function AboutSection() {
 
   // Create refs for elements
   const aboutRef = useRef(null);
-  const scrollTrigA = useRef([]);
-  const scrollTrigB = useRef([]);
-  const scrollTrigC = useRef([]);
-  const scrollTrigD = useRef([]);
+  const scrollTrigA = useRef(null);
+  const scrollTrigB = useRef(null);
+  const scrollTrigC = useRef(null);
+  const scrollTrigD = useRef(null);
 
   // When #about section is active, send to global state
   useInterObs(aboutRef, setSection, 0);
 
   useEffect(() => {
+    // Timeout so gsap will wait for component to completely render
+    // then apply effects
     setTimeout(() => {
+      // Put refs in array then loop through all and add the same effects
       const scrollTrig = [
         scrollTrigA.current,
         scrollTrigB.current,
@@ -75,10 +78,10 @@ export default function AboutSection() {
             opacity: 0,
             xPercent: -100,
             ease: "expo.out",
-            stagger: 0.6,
+            stagger: 0.8,
             scrollTrigger: {
               trigger: section,
-              scrub: 3,
+              scrub: 1,
               pin: true,
               start: "top top",
               end: "bottom",
@@ -107,12 +110,8 @@ export default function AboutSection() {
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
-                <div
-                  className={styles["about__col-divider-line"]}
-                ></div>
-                <div
-                  className={styles["about__col-divider-dot"]}
-                ></div>
+                <div className={styles["about__col-divider-line"]}></div>
+                <div className={styles["about__col-divider-dot"]}></div>
               </div>
             </div>
           </div>
@@ -176,12 +175,8 @@ export default function AboutSection() {
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
-                <div
-                  className={styles["about__col-divider-line"]}
-                ></div>
-                <div
-                  className={styles["about__col-divider-dot"]}
-                ></div>
+                <div className={styles["about__col-divider-line"]}></div>
+                <div className={styles["about__col-divider-dot"]}></div>
               </div>
             </div>
           </div>
@@ -217,12 +212,8 @@ export default function AboutSection() {
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
-                <div
-                  className={styles["about__col-divider-line"]}
-                ></div>
-                <div
-                  className={styles["about__col-divider-dot"]}
-                ></div>
+                <div className={styles["about__col-divider-line"]}></div>
+                <div className={styles["about__col-divider-dot"]}></div>
               </div>
             </div>
           </div>
@@ -257,12 +248,8 @@ export default function AboutSection() {
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
-                <div
-                  className={styles["about__col-divider-line"]}
-                ></div>
-                <div
-                  className={styles["about__col-divider-dot"]}
-                ></div>
+                <div className={styles["about__col-divider-line"]}></div>
+                <div className={styles["about__col-divider-dot"]}></div>
               </div>
             </div>
           </div>
