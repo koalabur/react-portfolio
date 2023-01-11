@@ -95,6 +95,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={styles.about} ref={aboutRef}>
+      <div className={styles.about__offset}></div>
       <div>
         <div className={styles.about__row} ref={scrollTrigA}>
           <div className={styles.about__col}>
