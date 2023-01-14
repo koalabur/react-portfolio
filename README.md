@@ -1,7 +1,8 @@
-# Letter From Tha Dev
-## What's going on?
+## What's Going On?
+- SSR: Server Side Rendering for SEO
 - Firebase - Cloud Firestore: Non SQL Database Hosting large majority of the content seen on site
 - Cloudinary: Hosting all of the jpegs and pngs, dynamic resizing, auto optimization
+- Base64 Encoded SVGs: Used to import svgs as img tags for better cross browser compatibility
 - Framer Motion: Animations for mounting and unmounting (compatible with react 18)
 - API Ninja: API for random facts
 - GSAP: Scroll triggered animations
