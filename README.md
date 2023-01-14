@@ -1,12 +1,12 @@
 # Letter From Tha Dev
-## Features
+## What's going on?
 - Firebase - Cloud Firestore: Non SQL Database Hosting large majority of the content seen on site
 - Cloudinary: Hosting all of the jpegs and pngs, dynamic resizing, auto optimization
-- Framer Motion: Animations for mounting and unmounting (only compatible with react 18)
+- Framer Motion: Animations for mounting and unmounting (compatible with react 18)
 - API Ninja: API for random facts
 - GSAP: Scroll triggered animations
 - Intersction Observer API: Highlight nav links when section is in view
-- Context Hook: Create and share global state between components \
+- Context API: Create and share global state between components \
 -- Usage: sending section ref to global state when it's in viewport then highlighting nav link of said section
 
 
