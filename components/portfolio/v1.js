@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef } from "react";
 
 // Component import
 import PortfolioItems from "/components/portfolio/child/v1.js";
@@ -15,7 +15,7 @@ import styles from "/styles/portfolio/v1.module.scss";
 
 export default function PortfolioSection() {
   // Global state
-  const { slide, setSlide, section, setSection } = useContext(AppContext);
+  const { slide, setSlide, setSection } = useContext(AppContext);
 
   // Local state
   const [portfolio, setPortfolio] = useState([]);

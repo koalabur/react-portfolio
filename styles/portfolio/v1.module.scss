@@ -118,6 +118,21 @@
           color: $faded-purple;
           width: auto;
           padding: 3px 10px;
+          margin-right: #{fluid(5px, 10px)};
+          
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &--active {
+            background: $active-bg;
+            color: $active-fc;
+          }
+
+          &--comingsoon {
+            background: $comingsoon-bg;
+            color: $comingsoon-fc;
+          }
         }
       }
     }
