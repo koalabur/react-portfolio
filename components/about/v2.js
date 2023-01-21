@@ -85,7 +85,7 @@ export default function AboutSection() {
               pin: true,
               start: "top top",
               end: "bottom",
-              pinSpacer: false,
+              pinSpacer: true,
             },
           }
         );
