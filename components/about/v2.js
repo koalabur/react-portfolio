@@ -1,5 +1,5 @@
 // React imports
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext, useLayoutEffect } from "react";
 
 // Next imports
 import Image from "next/image";
@@ -47,12 +47,12 @@ export default function AboutSection() {
   const scrollTrigD = useRef(null);
 
   // When #about section is active, send to global state
-  useInterObs(aboutRef, setSection, 0);
+  useInterObs(aboutRef, setSection, 0.1);
 
-  useEffect(() => {
-    // Timeout so gsap will wait for component to completely render
-    // then apply effects
-    setTimeout(() => {
+  useLayoutEffect(() => {
+    // https://greensock.com/react/#context
+    // TLDR: Needed for react cleanup
+    let ctx = gsap.context(() => {
       // Put refs in array then loop through all and add the same effects
       const scrollTrig = [
         scrollTrigA.current,
@@ -85,12 +85,14 @@ export default function AboutSection() {
               pin: true,
               start: "top top",
               end: "bottom",
-              pinSpacer: window.innerWidth < 1024 ? true : false,
+              pinSpacer: false,
             },
           }
         );
       });
-    }, 1700);
+    }, aboutRef);
+
+    return () => ctx.revert(); // cleanup
   }, []);
 
   return (
@@ -184,7 +186,7 @@ export default function AboutSection() {
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
               {reactCode.length === 0
-                ? console.log("Loading reactCode...")
+                ? null
                 : reactCode.items.map((skill) => {
                     return (
                       <p
@@ -221,7 +223,7 @@ export default function AboutSection() {
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
               {reactConcepts.length === 0
-                ? console.log("Loading reactConcepts..")
+                ? null
                 : reactConcepts.items.map((skill) => {
                     return (
                       <p
@@ -257,7 +259,7 @@ export default function AboutSection() {
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
               {reactOther.length === 0
-                ? console.log("Loading reactOther..")
+                ? null
                 : reactOther.items.map((skill) => {
                     return (
                       <p

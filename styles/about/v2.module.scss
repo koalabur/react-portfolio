@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    height: 100vh;
+    height: 100%;
     background: $purple;
 
     @include mobile-break {
