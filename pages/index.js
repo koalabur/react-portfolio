@@ -32,7 +32,7 @@ export default function Home() {
       </Head>
 
       {/* Components below */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!isSiteReady ? (
           <motion.div
             animate={{
@@ -46,7 +46,7 @@ export default function Home() {
             <Preloader />
           </motion.div>
         ) : null}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <Nav />
       <main>
         <Intro />
