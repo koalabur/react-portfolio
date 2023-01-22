@@ -62,7 +62,7 @@ export default function Sidebar() {
       />
       <div style={sidebarAnim}>
         {/* Loop through portfolios */}
-        <p className={styles.sidebar__title}>portfolios</p>
+        <p className={styles.sidebar__title}>other sites</p>
         {portfolios.map((item) => {
           return (
             <div className={styles.sidebar__item} key={item.id}>
