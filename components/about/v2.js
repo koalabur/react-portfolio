@@ -21,7 +21,7 @@ import styles from "/styles/about/v2.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { setSection } = useContext(AppContext);
+  const { setSection, setIsSiteReady } = useContext(AppContext);
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
@@ -50,6 +50,11 @@ export default function AboutSection() {
   useInterObs(aboutRef, setSection, 0.1);
 
   useLayoutEffect(() => {
+    // Remove preloader once rendering is complete
+    setTimeout(() => {
+      setIsSiteReady(true);
+    }, 2000);
+
     // https://greensock.com/react/#context
     // TLDR: Needed for react cleanup
     let ctx = gsap.context(() => {
@@ -91,8 +96,8 @@ export default function AboutSection() {
         );
       });
     }, aboutRef);
-
     return () => ctx.revert(); // cleanup
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

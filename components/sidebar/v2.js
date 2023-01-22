@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 
 // Context
+import { AppContext } from "../../context/GlobalState";
 
 // Style
 import styles from "/styles/sidebar/v2.module.scss";
@@ -13,6 +14,10 @@ import styles from "/styles/sidebar/v2.module.scss";
 import { portfolios, socials } from "/data/sidebar/v2";
 
 export default function Sidebar() {
+  // Global State
+  const { isSiteReady } = useContext(AppContext);
+
+  // Local State
   const [sidebarActive, setSidebarActive] = useState(true);
 
   function sidebarToggle() {
@@ -30,9 +35,9 @@ export default function Sidebar() {
   // onMount, do the thing
   useEffect(() => {
     setTimeout(() => {
-      window.innerWidth < 2000 ? setSidebarActive(false) : null;
-    }, 1500);
-  }, []);
+      window.innerWidth < 2000 && isSiteReady ? setSidebarActive(false) : null;
+    }, 2500);
+  }, [isSiteReady]);
 
   return (
     <aside
