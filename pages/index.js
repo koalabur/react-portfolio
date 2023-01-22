@@ -5,13 +5,13 @@ import { useContext } from "react";
 import Head from "next/head";
 
 // Framer motion
-import { AnimatePresence, motion } from "framer-motion";
+// import { AnimatePresence, motion } from "framer-motion";
 
 // Context
 import { AppContext } from "../context/GlobalState";
 
 // Components
-import Preloader from "../components/preloader/Fullscreen-Preloader";
+// import Preloader from "../components/preloader/Fullscreen-Preloader";
 import Sidebar from "../components/sidebar/v2";
 import Nav from "../components/nav/v1";
 import Intro from "../components/intro/v1";
@@ -21,7 +21,7 @@ import Footer from "../components/footer/v1";
 
 export default function Home() {
   // Global state
-  const { isSiteReady } = useContext(AppContext);
+  // const { isSiteReady } = useContext(AppContext);
 
   return (
     <>
