@@ -7,7 +7,7 @@ import { AppContext } from "../../context/GlobalState";
 // Styles
 import styles from "/styles/preLoader/fullscreen-preloader.module.scss";
 
-export default function PreLoader() {
+export default function FullscreenPreloader() {
   // Global State
   const { isSiteReady } = useContext(AppContext);
 

@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AppContext } from "../context/GlobalState";
 
 // Components
-import Preloader from "../components/preloader/FullscreenPreloader";
+import Preloader from "../components/preLoader/FullscreenPreloader";
 import Sidebar from "../components/sidebar/v2";
 import Nav from "../components/nav/v1";
 import Intro from "../components/intro/v1";
