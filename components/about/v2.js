@@ -21,7 +21,7 @@ import styles from "/styles/about/v2.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { setSection } = useContext(AppContext);
+  const { setSection } = useContext(AppContext)
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
