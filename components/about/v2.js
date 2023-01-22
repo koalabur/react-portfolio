@@ -53,7 +53,7 @@ export default function AboutSection() {
     // Remove preloader once rendering is complete
     setTimeout(() => {
       setIsSiteReady(true);
-    }, 2000);
+    }, 1500);
 
     // https://greensock.com/react/#context
     // TLDR: Needed for react cleanup
