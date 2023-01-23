@@ -18,9 +18,31 @@
     height: 100vh;
     background: $purple;
 
-    @include mobile-break {
-      grid-template-columns: 1fr;
-      height: 100%;
+    &:nth-child(1) {
+      @include mobile-break {
+        grid-template-columns: 1fr;
+        height: calc(100vh + 25rem);
+      }
+    }
+
+    &:nth-child(2) {
+      @include mobile-break {
+        grid-template-columns: 1fr;
+        height: calc(100vh + 25rem);
+      }
+    }
+
+    &:nth-child(3) {
+      @include mobile-break {
+        grid-template-columns: 1fr;
+        height: calc(100vh + 32rem);
+      }
+    }
+
+    &:nth-child(4) {
+      @include mobile-break {
+        height: calc(100vh + 5rem);
+      }
     }
   }
 
