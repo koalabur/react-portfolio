@@ -1,4 +1,5 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useCallback, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 // Component import
 import PortfolioItems from "/components/portfolio/child/v1.js";
@@ -8,7 +9,6 @@ import { AppContext } from "../../context/GlobalState";
 
 // Hook
 import { useGetCol } from "../../hooks/useGetFirestore";
-import { useInterObs } from "../../hooks/useIntersectionObs";
 
 // Style import
 import styles from "/styles/portfolio/v1.module.scss";
@@ -25,8 +25,30 @@ export default function PortfolioSection() {
   // Get collection from firestore
   useGetCol("portfolio", setPortfolio);
 
-  // When #portfolio section is active, highlight in nav
-  useInterObs(portfolioRef, setSection, 0.5);
+  // When #portfolio section is active, send to global state
+  const { ref: inViewRef, inView: portfolioRefIsVisible } = useInView({
+    threshold: 0.5,
+    rootMargin: "50px",
+  });
+
+  // Use `useCallback` so we don't recreate the function on each render
+  const setPortfolioRefs = useCallback(
+    (node) => {
+      // Ref's from useRef needs to have the node assigned to `current`
+      portfolioRef.current = node;
+      // Callback refs, like the one from `useInView`, is a function that takes the node as an argument
+      inViewRef(node);
+    },
+    [inViewRef]
+  );
+
+  // If #portfolio is visible then send ID to global setSection
+  useEffect(() => {
+    portfolioRefIsVisible
+      ? setSection(portfolioRef.current.id)
+      : setSection("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [portfolioRefIsVisible]);
 
   // Length of imported data array
   const length = portfolio.length;
@@ -44,7 +66,7 @@ export default function PortfolioSection() {
   }
 
   return (
-    <section id="portfolio" className={styles.portfolio} ref={portfolioRef}>
+    <section id="portfolio" className={styles.portfolio} ref={setPortfolioRefs}>
       <h1 className={styles.portfolio__title}>&lt; portfolio /&gt;</h1>
       <p className={styles.portfolio__index}>
         {slide + 1}/{portfolio.length}

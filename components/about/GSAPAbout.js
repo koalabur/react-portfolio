@@ -1,5 +1,13 @@
 // React imports
-import { useState, useRef, useContext, useLayoutEffect } from "react";
+import {
+  useState,
+  useRef,
+  useContext,
+  useLayoutEffect,
+  useCallback,
+  useEffect,
+} from "react";
+import { useInView } from "react-intersection-observer";
 
 // Next imports
 import Image from "next/image";
@@ -9,7 +17,6 @@ import { AppContext } from "../../context/GlobalState";
 
 // Hooks
 import { useGetCol, useGetDoc } from "../../hooks/useGetFirestore";
-import { useInterObs } from "../../hooks/useIntersectionObs";
 
 // GSAP
 import gsap from "gsap";
@@ -21,7 +28,7 @@ import styles from "/styles/about/v2.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { setSection, setIsSiteReady } = useContext(AppContext);
+  const { setSection } = useContext(AppContext);
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
@@ -47,14 +54,29 @@ export default function AboutSection() {
   const scrollTrigD = useRef(null);
 
   // When #about section is active, send to global state
-  useInterObs(aboutRef, setSection, 0.1);
+  const { ref: inViewRef, inView: aboutRefIsVisible } = useInView({
+    threshold: 0.05,
+    rootMargin: "-50px",
+  });
+
+  // Use `useCallback` so we don't recreate the function on each render
+  const setAboutRefs = useCallback(
+    (node) => {
+      // Ref's from useRef needs to have the node assigned to `current`
+      aboutRef.current = node;
+      // Callback refs, like the one from `useInView`, is a function that takes the node as an argument
+      inViewRef(node);
+    },
+    [inViewRef]
+  );
+
+  // If visible then send ID to global setSection
+  useEffect(() => {
+    aboutRefIsVisible ? setSection(aboutRef.current.id) : setSection("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aboutRefIsVisible]);
 
   useLayoutEffect(() => {
-    // Remove preloader once rendering is complete
-    setTimeout(() => {
-      setIsSiteReady(true);
-    }, 2000);
-
     // https://greensock.com/react/#context
     // TLDR: Needed for react cleanup
     let ctx = gsap.context(() => {
@@ -90,7 +112,6 @@ export default function AboutSection() {
               pin: true,
               start: "top top",
               end: "bottom",
-              pinSpacer: true,
             },
           }
         );
@@ -101,7 +122,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section id="about" className={styles.about} ref={aboutRef}>
+    <section id="about" className={styles.about} ref={setAboutRefs}>
       <div className={styles.about__offset}></div>
       <div>
         <div className={styles.about__row} ref={scrollTrigA}>
