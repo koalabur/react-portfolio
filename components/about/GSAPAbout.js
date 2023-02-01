@@ -28,7 +28,7 @@ import styles from "/styles/about/v2.module.scss";
 
 export default function AboutSection() {
   // Global state
-  const { setSection, setIsSiteReady } = useContext(AppContext);
+  const { setSection } = useContext(AppContext);
 
   // Local state
   const [aboutData, setAboutData] = useState([]);
@@ -77,11 +77,6 @@ export default function AboutSection() {
   }, [aboutRefIsVisible]);
 
   useLayoutEffect(() => {
-    // Remove preloader once rendering is complete
-    setTimeout(() => {
-      setIsSiteReady(true);
-    }, 100);
-
     // https://greensock.com/react/#context
     // TLDR: Needed for react cleanup
     let ctx = gsap.context(() => {
