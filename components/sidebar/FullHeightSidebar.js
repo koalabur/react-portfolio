@@ -31,7 +31,7 @@ export default function Sidebar() {
     setTimeout(() => {
       window.innerWidth < 2000 ? setSidebarActive(false) : null;
     }, 2000);
-  });
+  }, []);
 
   return (
     <aside
