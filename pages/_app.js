@@ -39,7 +39,10 @@ function MyApp({ Component, pageProps }) {
         // Get Result
         const result = await data.json();
         // Set IP in cookies
-        setCookie("CRD_UNIQUE_USER_REACT", result.ip, { maxAge: expIn30Days });
+        setCookie("CRD_UNIQUE_USER_REACT", result.ip, {
+          maxAge: expIn30Days,
+          sameSite: true,
+        });
         // Compare cookie IP with API IP
         if (getCookie("CRD_UNIQUE_USER_REACT") === result.ip) {
           // Update firestore + 1
