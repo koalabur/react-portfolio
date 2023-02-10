@@ -12,6 +12,7 @@ const nextConfig = {
   },
   env: {
     API_NINJA: process.env.API_NINJA_KEY,
+    IPGEO_KEY: process.env.IPGEO_KEY,
   },
 };
 
