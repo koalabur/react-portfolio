@@ -3,14 +3,7 @@ import { useEffect } from "react";
 
 // Firebase imports
 import { db } from "/firebase.config.js";
-import {
-  doc,
-  getDoc,
-  collection,
-  getDocs,
-  updateDoc,
-  increment,
-} from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 export function useGetDoc(col, document, setState) {
   const getData = async () => {
@@ -70,19 +63,4 @@ export function useGetCol(col, setState) {
     //* Empty array to only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-}
-
-// Update user count
-export async function UseUpdateUserCount(col, document) {
-  if (process.env.NODE_ENV == "development") {
-    const docRef = doc(db, col, document);
-    await updateDoc(docRef, {
-      devCount: increment(0.5),
-    });
-  } else if (process.env.NODE_ENV == "production") {
-    const docRef = doc(db, col, document);
-    await updateDoc(docRef, {
-      count: increment(1),
-    });
-  }
 }
