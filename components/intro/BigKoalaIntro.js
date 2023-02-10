@@ -1,10 +1,18 @@
 // Cloudinary
 import { CldImage } from "next-cloudinary";
 
+// Countapi
+// Unique user visits
+import countapi from "countapi-js";
+
 // Styles
 import styles from "/styles/intro/v1.module.scss";
 
-export default function intro() {
+export default function BigKoalaIntro() {
+  countapi.get("react.cameronrdesign.com").then((result) => {
+    console.log("apicount unique user count: " + result.value);
+  });
+
   return (
     <section className={styles.intro}>
       <div className={styles.intro__fg}>

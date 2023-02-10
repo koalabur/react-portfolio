@@ -71,18 +71,3 @@ export function useGetCol(col, setState) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
-
-// Update user count
-export async function UseUpdateUserCount(col, document) {
-  if (process.env.NODE_ENV == "development") {
-    const docRef = doc(db, col, document);
-    await updateDoc(docRef, {
-      devCount: increment(0.5),
-    });
-  } else if (process.env.NODE_ENV == "production") {
-    const docRef = doc(db, col, document);
-    await updateDoc(docRef, {
-      count: increment(1),
-    });
-  }
-}
