@@ -13,16 +13,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Cameron R Design</title>
+        <title>Cameron R Design Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="React/ Next.js Portfolio created by Cameron"
         />
-        <meta
-          property="og:title"
-          content="React/ Next.js Portfolio | Cameron R Design"
-        />
+        <meta property="og:title" content="Cameron R Design Portfolio" />
         <meta
           property="og:description"
           content="React/ Next.js Portfolio created by Cameron"
