@@ -17,15 +17,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="React/ Next.js Portfolio for Cameron Roberts"
+          content="React/ Next.js Portfolio created by Cameron"
         />
         <meta
           property="og:title"
-          content="React/ Next.js Portfolio for Cameron Roberts"
+          content="React/ Next.js Portfolio | Cameron R Design"
         />
         <meta
           property="og:description"
-          content="React/ Next.js Portfolio for Cameron Roberts"
+          content="React/ Next.js Portfolio created by Cameron"
         />
         <meta
           property="og:image"
