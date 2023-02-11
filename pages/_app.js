@@ -1,6 +1,9 @@
 // React
 import React from "react";
 
+// GA
+import { GoogleAnalytics } from "nextjs-google-analytics";
+
 // Global State
 import { AppContextProvider } from "../context/GlobalState";
 
@@ -24,6 +27,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className={gfont.variable}>
       <AppContextProvider>
+        <GoogleAnalytics trackPageViews />
         <Component {...pageProps} />
       </AppContextProvider>
     </div>
