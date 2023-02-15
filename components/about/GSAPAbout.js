@@ -1,6 +1,5 @@
 // React imports
 import {
-  useState,
   useRef,
   useContext,
   useLayoutEffect,
@@ -15,8 +14,11 @@ import Image from "next/image";
 // Context
 import { AppContext } from "../../context/GlobalState";
 
+// Preloader
+import BasicPreloader from "../preLoader/BasicPrelaoder";
+
 // Hooks
-import { useGetCol, useGetDoc } from "../../hooks/useGetFirestore";
+import useContentful from "../../hooks/useContentful";
 
 // GSAP
 import gsap from "gsap";
@@ -30,21 +32,25 @@ export default function AboutSection() {
   // Global state
   const { setSection } = useContext(AppContext);
 
-  // Local state
-  const [aboutData, setAboutData] = useState([]);
-  const [reactCode, setReactCode] = useState([]);
-  const [reactConcepts, setReactConcepts] = useState([]);
-  const [reactOther, setReactOther] = useState([]);
-
   // Styling for about loop
   const normalImage = styles["about__col-highlights-item-img"];
   const rotateImage = styles["about__col-highlights-item-img--rotate"];
 
-  // Get data from firestore
-  useGetCol("about", setAboutData);
-  useGetDoc("skills", "react-code", setReactCode);
-  useGetDoc("skills", "react-concepts", setReactConcepts);
-  useGetDoc("skills", "react-other", setReactOther);
+  // Contentful
+  const query = `
+    query aboutCollectionQuery {
+      aboutCollection {
+        items {
+          title,
+          subtitle,
+          contentInJsonFormat,
+          contentInListFormat
+        }
+      }
+    }
+  `;
+
+  const { data } = useContentful(query);
 
   // Create refs for elements
   const aboutRef = useRef(null);
@@ -128,14 +134,17 @@ export default function AboutSection() {
         <div className={styles.about__row} ref={scrollTrigA}>
           <div className={styles.about__col}>
             <div className={styles["about__col-row"]}>
-              {/* aboutData */}
               <div className={styles["about__col-title"]}>
                 <h1 className={styles["about__col-title-text"]}>
                   &lt;h1&#62;
                   <span className={styles["about__col-title-text-indent"]}>
-                    who am i?
+                    {data ? (
+                      data.aboutCollection.items[3].title
+                    ) : (
+                      <BasicPreloader />
+                    )}
                   </span>
-                  &lt;h1/&#62;
+                  &lt;/h1&#62;
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
@@ -146,51 +155,55 @@ export default function AboutSection() {
           </div>
           <div className={styles.about__col}>
             <h2 className={styles["about__col-subtitle"]}>
-              my name is{" "}
-              <strong>
-                <u>cameron</u>
-              </strong>
-              , i am a
-              <strong>
-                {" "}
-                <u>front end dev</u>{" "}
-              </strong>
-              who likes...
+              {data ? (
+                data.aboutCollection.items[3].subtitle
+              ) : (
+                <BasicPreloader />
+              )}
             </h2>
             <div className={styles["about__col-highlights"]}>
-              {aboutData.map((about) => {
-                return (
-                  <div
-                    className={styles["about__col-highlights-item"]}
-                    key={about.id}
-                  >
-                    <Image
-                      src={about.icon.img}
-                      alt={about.icon.alt}
-                      width={about.icon.width}
-                      height={about.icon.height}
-                      className={
-                        about.id === 4
-                          ? normalImage + " " + rotateImage
-                          : normalImage
-                      }
-                    />
-                    <h3 className={styles["about__col-highlights-item-title"]}>
-                      {about.title}
-                    </h3>
-                    <p
-                      className={styles["about__col-highlights-item-subtitle"]}
-                    >
-                      {about.desc}
-                    </p>
-                  </div>
-                );
-              })}
+              {data ? (
+                data.aboutCollection.items[3].contentInJsonFormat.map(
+                  (item) => {
+                    return (
+                      <div
+                        className={styles["about__col-highlights-item"]}
+                        key={item.id}
+                      >
+                        <Image
+                          src={item.base64img}
+                          alt={item.title}
+                          width={101}
+                          height={101}
+                          className={
+                            item.id === 4
+                              ? normalImage + " " + rotateImage
+                              : normalImage
+                          }
+                        />
+                        <h3
+                          className={styles["about__col-highlights-item-title"]}
+                        >
+                          {item.title}
+                        </h3>
+                        <p
+                          className={
+                            styles["about__col-highlights-item-subtitle"]
+                          }
+                        >
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    );
+                  }
+                )
+              ) : (
+                <BasicPreloader />
+              )}
             </div>
           </div>
         </div>
 
-        {/* reactCode */}
         <div className={styles.about__row} ref={scrollTrigB}>
           <div className={styles.about__col}>
             <div className={styles["about__col-row"]}>
@@ -198,9 +211,13 @@ export default function AboutSection() {
                 <h1 className={styles["about__col-title-text"]}>
                   &lt;h1&#62;
                   <span className={styles["about__col-title-text-indent"]}>
-                    i know cool codey things like
+                    {data ? (
+                      data.aboutCollection.items[2].title
+                    ) : (
+                      <BasicPreloader />
+                    )}
                   </span>
-                  &lt;h1/&#62;
+                  &lt;/h1&#62;
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
@@ -211,9 +228,9 @@ export default function AboutSection() {
           </div>
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
-              {reactCode.length === 0
-                ? null
-                : reactCode.items.map((skill) => {
+              {data ? (
+                data.aboutCollection.items[2].contentInListFormat.map(
+                  (skill) => {
                     return (
                       <p
                         className={styles["about__col-skills-item"]}
@@ -222,12 +239,15 @@ export default function AboutSection() {
                         {skill}
                       </p>
                     );
-                  })}
+                  }
+                )
+              ) : (
+                <BasicPreloader />
+              )}
             </div>
           </div>
         </div>
 
-        {/* reactConcepts */}
         <div className={styles.about__row} ref={scrollTrigC}>
           <div className={styles.about__col}>
             <div className={styles["about__col-row"]}>
@@ -235,9 +255,13 @@ export default function AboutSection() {
                 <h1 className={styles["about__col-title-text"]}>
                   &lt;h1&#62;
                   <span className={styles["about__col-title-text-indent"]}>
-                    i know cool concepts and libraries like
+                    {data ? (
+                      data.aboutCollection.items[1].title
+                    ) : (
+                      <BasicPreloader />
+                    )}
                   </span>
-                  &lt;h1/&#62;
+                  &lt;/h1&#62;
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
@@ -248,22 +272,26 @@ export default function AboutSection() {
           </div>
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
-              {reactConcepts.length === 0
-                ? null
-                : reactConcepts.items.map((skill) => {
+              {data ? (
+                data.aboutCollection.items[1].contentInListFormat.map(
+                  (concept) => {
                     return (
                       <p
                         className={styles["about__col-skills-item"]}
-                        key={skill}
+                        key={concept}
                       >
-                        {skill}
+                        {concept}
                       </p>
                     );
-                  })}
+                  }
+                )
+              ) : (
+                <BasicPreloader />
+              )}
             </div>
           </div>
         </div>
-        {/* reactOther */}
+
         <div className={styles.about__row} ref={scrollTrigD}>
           <div className={styles.about__col}>
             <div className={styles["about__col-row"]}>
@@ -271,9 +299,13 @@ export default function AboutSection() {
                 <h1 className={styles["about__col-title-text"]}>
                   &lt;h1&#62;
                   <span className={styles["about__col-title-text-indent"]}>
-                    i know other cool things like
+                    {data ? (
+                      data.aboutCollection.items[0].title
+                    ) : (
+                      <BasicPreloader />
+                    )}
                   </span>
-                  &lt;h1/&#62;
+                  &lt;/h1&#62;
                 </h1>
               </div>
               <div className={styles["about__col-divider"]}>
@@ -284,18 +316,22 @@ export default function AboutSection() {
           </div>
           <div className={styles.about__col}>
             <div className={styles["about__col-skills"]}>
-              {reactOther.length === 0
-                ? null
-                : reactOther.items.map((skill) => {
+              {data ? (
+                data.aboutCollection.items[0].contentInListFormat.map(
+                  (other) => {
                     return (
                       <p
                         className={styles["about__col-skills-item"]}
-                        key={skill}
+                        key={other}
                       >
-                        {skill}
+                        {other}
                       </p>
                     );
-                  })}
+                  }
+                )
+              ) : (
+                <BasicPreloader />
+              )}
             </div>
           </div>
         </div>

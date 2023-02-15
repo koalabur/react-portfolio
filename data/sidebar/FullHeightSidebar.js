@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-export const portfolios = [
+export const otherSites = [
   {
     id: 1,
     url: "https://vue.cameronrdesign.com/",

@@ -45,11 +45,13 @@
       padding-right: 0.9rem;
       -webkit-animation: bounceAnimation 2s ease 0s infinite alternate forwards;
       animation: bounceAnimation 2s ease 0s infinite alternate forwards;
-      fill: $font-color;
+      filter: invert(92%) sepia(22%) saturate(4234%) hue-rotate(186deg)
+        brightness(114%) contrast(90%);
       transition: 0.25s ease-in-out;
 
       &:hover {
-        fill: $react-blue;
+        filter: invert(73%) sepia(85%) saturate(428%) hue-rotate(161deg)
+          brightness(94%) contrast(110%);
       }
     }
   }

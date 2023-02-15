@@ -6,7 +6,7 @@ import Sidebar from "../components/sidebar/FullHeightSidebar";
 import Nav from "../components/nav/MainNav";
 import Intro from "../components/intro/BigKoalaIntro";
 import About from "../components/about/GSAPAbout";
-import Portfolio from "../components/portfolio/GSAPPortfolio";
+import Portfolio from "../components/portfolio/BasicPortfolio";
 import Footer from "../components/footer/BasicFooter";
 
 export default function Home() {
