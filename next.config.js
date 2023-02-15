@@ -7,12 +7,13 @@ const nextConfig = {
     prependData: `@import "app.scss";`,
   },
   images: {
-    loader: "cloudinary",
-    path: "https://res.cloudinary.com/dg6sd9yyx/image/upload/v1671834530",
+    domains: ["images.ctfassets.net"],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   env: {
-    API_NINJA: process.env.API_NINJA_KEY,
-    IPGEO_KEY: process.env.IPGEO_KEY,
+    CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
+    CONTENTFUL_CDA: process.env.CONTENTFUL_API,
   },
 };
 

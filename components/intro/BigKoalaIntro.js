@@ -1,38 +1,68 @@
-// Cloudinary
-import { CldImage } from "next-cloudinary";
+// Next imports
+import Image from "next/image";
+
+// Preloader
+import BasicPreloader from "../preLoader/BasicPrelaoder";
+
+// Hook
+import useContentful from "../../hooks/useContentful";
 
 // Styles
-import styles from "/styles/intro/v1.module.scss";
+import styles from "/styles/intro/intro.module.scss";
 
 export default function BigKoalaIntro() {
+  const query = `
+    query introBigKoalaEntryQuery {
+      introBigKoala(id: "5ZRxIErZqlgTyN59tjmj6t") {
+        image {
+          url,
+          title
+        }
+        title
+        icon {
+          url,
+          title
+        }
+      }
+    }
+  `;
+
+  const { data } = useContentful(query);
+
   return (
     <section className={styles.intro}>
       <div className={styles.intro__fg}>
-        <CldImage
-          className={styles["intro__fg-img"]}
-          src="/intro/koala-hero_gaqznq.png"
-          width="846"
-          height="775"
-          preload="true"
-          alt="Koala Intro"
-        />
-        {/* use styles.["my-scss"] for any scss using hyphen */}
-        <h1 className={styles["intro__fg-title"]}>
-          i&apos;m just a web guy doing web guy things
-        </h1>
+        {data ? (
+          <Image
+            className={styles["intro__fg-img"]}
+            src={data.introBigKoala.image.url}
+            alt={data.introBigKoala.image.title}
+            width={846}
+            height={775}
+            priority
+          />
+        ) : (
+          <BasicPreloader />
+        )}
+        {data ? (
+          <h1 className={styles["intro__fg-title"]}>
+            {data.introBigKoala.title}
+          </h1>
+        ) : (
+          <BasicPreloader />
+        )}
         <a href="#about">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={styles["intro__fg-svg"]}
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="mouse"
-            role="button"
-            viewBox="0 0 384 512"
-          >
-            <path d="M0 352a160 160 0 0 0 160 160h64a160 160 0 0 0 160-160V224H0zM176 0h-16A160 160 0 0 0 0 160v32h176zm48 0h-16v192h176v-32A160 160 0 0 0 224 0z" />
-          </svg>
+          {data ? (
+            <Image
+              className={styles["intro__fg-svg"]}
+              src={data.introBigKoala.icon.url}
+              alt={data.introBigKoala.icon.title}
+              width={50}
+              height={67}
+            />
+          ) : (
+            <BasicPreloader />
+          )}
         </a>
       </div>
 

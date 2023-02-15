@@ -2,28 +2,23 @@ import { useContext, useState, useRef, useCallback, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 // Component import
-import PortfolioItems from "/components/portfolio/child/v1.js";
+import PortfolioItems from "/components/portfolio/child/PortfolioItems.js";
 
 // Context
 import { AppContext } from "../../context/GlobalState";
 
-// Hook
-import { useGetCol } from "../../hooks/useGetFirestore";
-
 // Style import
 import styles from "/styles/portfolio/v1.module.scss";
 
-export default function PortfolioSection() {
+export default function BasicPortfolio() {
   // Global state
   const { slide, setSlide, setSection } = useContext(AppContext);
 
   // Local state
   const [portfolio, setPortfolio] = useState([]);
 
+  // Element refs
   const portfolioRef = useRef();
-
-  // Get collection from firestore
-  useGetCol("portfolio", setPortfolio);
 
   // When #portfolio section is active, send to global state
   const { ref: inViewRef, inView: portfolioRefIsVisible } = useInView({
@@ -47,10 +42,13 @@ export default function PortfolioSection() {
     portfolioRefIsVisible
       ? setSection(portfolioRef.current.id)
       : setSection("");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [portfolioRefIsVisible]);
+  }, [portfolioRefIsVisible, setSection]);
 
-  // Length of imported data array
+  // Callback func to get data from child
+  const childSlideData = (payload) => {
+    setPortfolio(payload);
+  };
+
   const length = portfolio.length;
 
   function nextSlide() {
@@ -72,7 +70,7 @@ export default function PortfolioSection() {
         {slide + 1}/{portfolio.length}
       </p>
       <div className={styles.portfolio__row}>
-        <PortfolioItems />
+        <PortfolioItems childSlideData={childSlideData} />
         <button
           onClick={prevSlide}
           className={`${styles["portfolio__row-arrow"]} ${styles["portfolio__row-arrow--left"]}`}

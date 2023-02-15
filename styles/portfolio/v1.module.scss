@@ -119,7 +119,7 @@
           width: auto;
           padding: 3px 10px;
           margin-right: #{fluid(5px, 10px)};
-          
+
           &:last-child {
             margin-right: 0;
           }
@@ -132,6 +132,16 @@
           &--comingsoon {
             background: $comingsoon-bg;
             color: $comingsoon-fc;
+          }
+
+          &--wordpress {
+            background: $wordpress-blue;
+            color: $active-fc;
+          }
+
+          &--ecomm {
+            background: $ecomm-red;
+            color: $ecomm-yellow;
           }
         }
       }
