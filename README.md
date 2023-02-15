@@ -3,7 +3,6 @@
 - Contentful: Headless CMS managing 99% of the site
 - GraphQL: API calls to contentful
 - Dynamic Scaling SCSS: CSS scales from a min to a max to look proportionate across all devices
-- Cloudinary: Hosting all of the jpegs and pngs, dynamic resizing, auto optimization
 - Base64 Encoded SVGs: Used to import svgs as img tags for better cross browser compatibility
 - Framer Motion: Animations for mounting and unmounting (compatible with react 18)
 - API Ninja: API for random facts
