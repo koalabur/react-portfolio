@@ -5,7 +5,6 @@
 - Dynamic Scaling SCSS: CSS scales from a min to a max to look proportionate across all devices
 - Base64 Encoded SVGs: Used to import svgs as img tags for better cross browser compatibility
 - Framer Motion: Animations for mounting and unmounting (compatible with react 18)
-- API Ninja: API for random facts
 - GSAP: Scroll triggered animations
 - useInView (https://www.npmjs.com/package/react-intersection-observer): Highlight nav links when section is in view
 - Context API: Create and share global state between components \
