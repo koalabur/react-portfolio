@@ -10,7 +10,7 @@ import { AppContext } from "../../context/GlobalState";
 // Style import
 import styles from "/styles/portfolio/v1.module.scss";
 
-export default function BasicPortfolio() {
+export default function BasicPortfolio({ basicPortfolioContent }) {
   // Global state
   const { slide, setSlide, setSection } = useContext(AppContext);
 
@@ -70,7 +70,10 @@ export default function BasicPortfolio() {
         {slide + 1}/{portfolio.length}
       </p>
       <div className={styles.portfolio__row}>
-        <PortfolioItems childSlideData={childSlideData} />
+        <PortfolioItems
+          childSlideData={childSlideData}
+          basicPortfolioContent={basicPortfolioContent}
+        />
         <button
           onClick={prevSlide}
           className={`${styles["portfolio__row-arrow"]} ${styles["portfolio__row-arrow--left"]}`}
