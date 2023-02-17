@@ -1,68 +1,37 @@
 // Next imports
 import Image from "next/image";
 
-// Preloader
-import BasicPreloader from "../preLoader/BasicPrelaoder";
-
-// Hook
-import useContentful from "../../hooks/useContentful";
+// React
+import { useState } from "react";
 
 // Styles
 import styles from "/styles/intro/intro.module.scss";
 
-export default function BigKoalaIntro() {
-  const query = `
-    query introBigKoalaEntryQuery {
-      introBigKoala(id: "5ZRxIErZqlgTyN59tjmj6t") {
-        image {
-          url,
-          title
-        }
-        title
-        icon {
-          url,
-          title
-        }
-      }
-    }
-  `;
-
-  const { data } = useContentful(query);
+export default function BigKoalaIntro({ introContent }) {
+  const [content, setContent] = useState(introContent.data.introBigKoala);
 
   return (
     <section className={styles.intro}>
       <div className={styles.intro__fg}>
-        {data ? (
-          <Image
-            className={styles["intro__fg-img"]}
-            src={data.introBigKoala.image.url}
-            alt={data.introBigKoala.image.title}
-            width={846}
-            height={775}
-            priority
-          />
-        ) : (
-          <BasicPreloader />
-        )}
-        {data ? (
-          <h1 className={styles["intro__fg-title"]}>
-            {data.introBigKoala.title}
-          </h1>
-        ) : (
-          <BasicPreloader />
-        )}
+        <Image
+          className={styles["intro__fg-img"]}
+          src={content.image.url}
+          alt={content.image.title}
+          width={846}
+          height={775}
+          priority
+        />
+
+        <h1 className={styles["intro__fg-title"]}>{content.title}</h1>
+
         <a href="#about">
-          {data ? (
-            <Image
-              className={styles["intro__fg-svg"]}
-              src={data.introBigKoala.icon.url}
-              alt={data.introBigKoala.icon.title}
-              width={50}
-              height={67}
-            />
-          ) : (
-            <BasicPreloader />
-          )}
+          <Image
+            className={styles["intro__fg-svg"]}
+            src={content.icon.url}
+            alt={content.icon.title}
+            width={50}
+            height={67}
+          />
         </a>
       </div>
 

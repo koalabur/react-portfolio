@@ -1,11 +1,5 @@
 // React
-import { useContext, useState, useEffect } from "react";
-
-// Preloader
-import BasicPreloader from "../preLoader/BasicPrelaoder";
-
-// Hook
-import useContentful from "../../hooks/useContentful";
+import { useContext, useState } from "react";
 
 // Styles
 import styles from "/styles/nav/v1.module.scss";
@@ -13,19 +7,12 @@ import styles from "/styles/nav/v1.module.scss";
 // Context
 import { AppContext } from "../../context/GlobalState";
 
-export default function MainNav() {
+export default function MainNav({ navLinks: navData }) {
   // Global state
   const { section } = useContext(AppContext);
 
-  const query = `
-    query navEntryQuery {
-      nav(id: "3JoFznXXx6b4rrvIx9UKqk") {
-        link
-      }
-    }
-  `;
-
-  const { data } = useContentful(query);
+  // Local state
+  const [navLinks, setNavLinks] = useState(navData.data.nav.link);
 
   function active(activeSection) {
     if (section === activeSection) {
@@ -36,17 +23,13 @@ export default function MainNav() {
   }
   return (
     <nav className={styles.siteNav}>
-      {data ? (
-        data.nav.link.map((item) => {
-          return (
-            <a key={item} className={active(`${item}`)} href={`#${item}`}>
-              {item}
-            </a>
-          );
-        })
-      ) : (
-        <BasicPreloader />
-      )}
+      {navLinks.map((link) => {
+        return (
+          <a key={link} className={active(`${link}`)} href={`#${link}`}>
+            {link}
+          </a>
+        );
+      })}
     </nav>
   );
 }
