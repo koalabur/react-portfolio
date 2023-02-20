@@ -14,6 +14,7 @@ const nextConfig = {
   env: {
     CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
     CONTENTFUL_CDA: process.env.CONTENTFUL_API,
+    CHROMATIC_PROJECT_TOKEN: process.env.CHROMATIC_PROJECT_TOKEN,
   },
 };
 

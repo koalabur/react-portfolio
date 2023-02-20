@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=0149916e9ec9"
   },
   "dependencies": {
     "@next/font": "^13.0.3",
@@ -25,6 +28,18 @@
     "react-intersection-observer": "^9.4.1"
   },
   "devDependencies": {
-    "sass": "^1.56.1"
-  }
+    "@storybook/addon-essentials": "^7.0.0-beta.50",
+    "@storybook/addon-interactions": "^7.0.0-beta.50",
+    "@storybook/addon-links": "^7.0.0-beta.50",
+    "@storybook/blocks": "^7.0.0-beta.50",
+    "@storybook/nextjs": "^7.0.0-beta.50",
+    "@storybook/react": "^7.0.0-beta.50",
+    "@storybook/testing-library": "^0.0.14-next.1",
+    "chromatic": "^6.17.0",
+    "eslint-plugin-storybook": "^0.6.10",
+    "sass": "^1.56.1",
+    "storybook": "^7.0.0-beta.50"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "reactnext-portfolio@0.1.0"
 }
