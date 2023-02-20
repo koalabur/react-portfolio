@@ -1,4 +1,5 @@
 ## What's Going On?
+- Chromatic Storybook: Component library
 - SSR: Server Side Rendering for SEO
 - Contentful: Headless CMS managing 99% of the site
 - GraphQL: API calls to contentful
