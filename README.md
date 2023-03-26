@@ -1,16 +1,19 @@
 ## What's Going On?
-- Chromatic Storybook: Component library
-- SSR: Server Side Rendering for SEO
-- Contentful: Headless CMS managing 99% of the site
-- GraphQL: API calls to contentful
-- Dynamic Scaling SCSS: CSS scales from a min to a max to look proportionate across all devices
-- Base64 Encoded SVGs: Used to import svgs as img tags for better cross browser compatibility
-- Framer Motion: Animations for mounting and unmounting (compatible with react 18)
-- GSAP: Scroll triggered animations
-- useInView (https://www.npmjs.com/package/react-intersection-observer): Highlight nav links when section is in view
-- Context API: Create and share global state between components \
--- Usage: sending section ref to global state when it is in viewport then highlight nav link of active section
 
+![alt text](https://lh4.googleusercontent.com/Ii4fCi3e4TtyyQIW22XtYmG369dECs0oheOuKDdsmvrNMDDKQJ5zQwm3l7g9twToVSo=w2400 "Next 3") [Next 3](https://nextjs.org/)
+- SSR: Server Side Rendering for SEO
+- Context API: Share global state between components
+- [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer): Highlight nav links when section is in view then send to context API
+
+![alt text](https://lh3.googleusercontent.com/bCipOytyPoWekjujlT9Ads6VuqGibsela9QsUyZGCizo7A3LG0P6wg_KwAhHYtb0f1s=w2400 "Chromatic") [Chromatic Storybook](https://www.chromatic.com/)
+
+![alt text](https://lh6.googleusercontent.com/aNQxUtMEztBjZePrAkL7KPWSXJazMGwnxMDXazxDO4BNh-4aw6YwkvtZGm-oR07mih8=w2400 "GSAP") [GSAP](https://greensock.com/)
+
+![alt text](https://lh6.googleusercontent.com/FU5h_Q0As38kMoqvxtWEmzK10JkainV6PdkepauYdChfg4V_vFi4qpqc-hQnAch1PsU=w2400 "Contentful") [Contentful](https://www.contentful.com/)
+
+![alt text](https://lh3.googleusercontent.com/P-ZUEk2nqRdojQZXEDr72g-2z92yxlwHwdfjYo2A_eu10pr6GjtmnftRKG3JSOcphV8=w2400 "Vercel") [Vercel](https://vercel.com/)
+
+---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
