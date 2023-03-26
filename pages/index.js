@@ -146,7 +146,8 @@ export async function getServerSideProps(context) {
             image {
               url
             },
-            tools
+            tools,
+            display
           }
         }
       }
