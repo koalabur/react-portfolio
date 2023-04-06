@@ -2,6 +2,7 @@
 
 ![alt text](https://lh4.googleusercontent.com/Ii4fCi3e4TtyyQIW22XtYmG369dECs0oheOuKDdsmvrNMDDKQJ5zQwm3l7g9twToVSo=w2400 "Next 3") [Next 3](https://nextjs.org/)
 - SSR: Server Side Rendering for SEO
+- API calls on the server allowing pages to be statically generated with all of the content necessary
 - Context API: Share global state between components
 - [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer): Highlight nav links when section is in view then send to context API
 
