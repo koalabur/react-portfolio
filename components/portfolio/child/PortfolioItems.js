@@ -144,6 +144,8 @@ export default function PortfolioItems({
                           ? `${styles["portfolio__row-item-tools-inner"]} ${styles["portfolio__row-item-tools-inner--ecomm"]}`
                           : tool.toLowerCase() === "vue/nuxt"
                           ? `${styles["portfolio__row-item-tools-inner"]} ${styles["portfolio__row-item-tools-inner--vuenuxt"]}`
+                          : tool.toLowerCase() === "react/next"
+                          ? `${styles["portfolio__row-item-tools-inner"]} ${styles["portfolio__row-item-tools-inner--reactnext"]}`
                           : styles["portfolio__row-item-tools-inner"]
                       }
                     >
