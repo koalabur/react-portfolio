@@ -1,0 +1,99 @@
+$top-spacing: #{fluid(30px, 60px)};
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $purple;
+  padding: #{fluid(10px, 50px)};
+  z-index: 11;
+
+  &__content {
+    background: #31265b;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+    gap: 72px;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include mobile-break {
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-top: 0;
+      justify-content: flex-start;
+    }
+    &-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: #{fluid(40px, 60px)};
+      height: #{fluid(40px, 60px)};
+      cursor: pointer;
+      transform: rotate(45deg);
+      background: $purple;
+      border-radius: 50%;
+      padding: 5px;
+      transition: 0.2s ease-in-out;
+      z-index: 1;
+
+      &:hover {
+        background: #cc0000;
+      }
+    }
+    &-left {
+      display: flex;
+      flex-direction: column;
+      padding-top: $top-spacing;
+
+      @include mobile-break {
+        padding: 0;
+      }
+      &-hero {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 13px;
+        padding: 0 #{fluid(0px, 50px)};
+        min-height: 400px;
+
+        &-img {
+          object-fit: contain;
+        }
+      }
+      &-tech {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        justify-content: flex-start;
+        padding-bottom: 15px;
+
+        @include mobile-break {
+          padding-bottom: 0;
+        }
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      padding-top: $top-spacing;
+      max-width: 1000px;
+      width: 100%;
+
+      &-title {
+        font-family: '__IBM_Plex_Sans_392bc3', arial, '__IBM_Plex_Sans_Fallback_392bc3';
+        font-size: #{fluid(30px, 42px)};
+        margin-bottom: #{fluid(20px, 40px)};
+        color: $font-color;
+      }
+    }
+  }
+}

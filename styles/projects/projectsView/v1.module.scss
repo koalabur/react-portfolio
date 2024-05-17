@@ -1,0 +1,40 @@
+.projects-view {
+  max-width: 1700px;
+  margin-left: auto;
+  margin-right: auto;
+  @include edge-padding;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 14px;
+    grid-row-gap: 47px;
+
+    @include mobile-break {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 15px;
+    }
+    &-notice {
+      font-family: $main-font;
+      color: $font-color;
+      text-align: center;
+      width: 100%;
+      font-size: #{fluid(22px, 40px)};
+      grid-area: 1 / 1 / 2 / 5;
+    }
+  }
+  &__title {
+    font-family: $main-font;
+    font-size: #{fluid(26px, 38px)};
+    font-weight: 600;
+    background: -webkit-linear-gradient(left, #3700ff 0%, #b629f2 45%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+}

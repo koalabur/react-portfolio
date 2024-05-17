@@ -6,7 +6,7 @@ import Sidebar from "../components/sidebar/FullHeightSidebar";
 import Nav from "../components/nav/MainNav";
 import Intro from "../components/intro/BigKoalaIntro";
 import About from "../components/about/GSAPAbout";
-import Portfolio from "../components/portfolio/BasicPortfolio";
+import ProjectsView from "../components/projects/ProjectsView";
 import Footer from "../components/footer/BasicFooter";
 
 export default function Home({
@@ -16,7 +16,7 @@ export default function Home({
   codeyThingsData,
   coolConceptsData,
   coolThingsData,
-  basicPortfolioContent,
+  projectsData,
 }) {
   return (
     <>
@@ -48,7 +48,7 @@ export default function Home({
           coolConceptsData={coolConceptsData}
           coolThingsData={coolThingsData}
         />
-        <Portfolio basicPortfolioContent={basicPortfolioContent} />
+        <ProjectsView projects={projectsData} />
       </main>
       <Sidebar />
       <Footer />
@@ -136,27 +136,33 @@ export async function getServerSideProps(context) {
   );
 
   // Data for <Portfolio /> component
-  const basicPortfolioQuery = `
-      query portfolioCollectionQuery {
-        portfolioCollection {
-          items {
-            id,
-            title,
-            url,
-            image {
-              url
-            },
-            tools,
-            display
+  const projectsQuery = `
+  query projectsEntryQuery {
+    projects(id: "Ue3loenRUlViyPr30MZDV") {
+      projectsCollection {
+        items {
+          title
+          projectColorTheme
+          image {
+            title
+            url
+            width
+            height
           }
+          imagePosition
+          projectDescription {
+            json
+          }
+          tech
+          websiteLink
+          githubLink
         }
       }
-    `;
-  const rawData = await UseContentful(basicPortfolioQuery);
-  const basicPortfolioContent =
-    rawData.data.portfolioCollection.items.sort(function (a, b) {
-      return a.id - b.id;
-    });
+    }
+  }
+`;
+  const rawProjectsData = await UseContentful(projectsQuery);
+  const projectsData = rawProjectsData.data.projects.projectsCollection.items;
 
   return {
     props: {
@@ -166,7 +172,7 @@ export async function getServerSideProps(context) {
       codeyThingsData,
       coolConceptsData,
       coolThingsData,
-      basicPortfolioContent,
+      projectsData,
     },
   };
 }

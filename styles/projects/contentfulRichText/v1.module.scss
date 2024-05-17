@@ -1,0 +1,20 @@
+$std-fs: #{fluid(16px, 25px)};
+
+.contentful-rich-text > p {
+  font-family: '__IBM_Plex_Sans_392bc3', arial, '__IBM_Plex_Sans_Fallback_392bc3';
+  font-size: $std-fs;
+  color: $font-color;
+  line-height: 120%;
+  margin-bottom: 20px;
+}
+.contentful-rich-text > ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+
+  li {
+    font-family: '__IBM_Plex_Sans_392bc3', arial, '__IBM_Plex_Sans_Fallback_392bc3';
+    font-size: $std-fs;
+    color: $font-color;
+    line-height: 120%;
+  }
+}
