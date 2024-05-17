@@ -1,0 +1,105 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+
+  &__border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: 0.3s linear;
+
+    &:nth-child(1) {
+      transform: rotate(0deg);
+    }
+    &:nth-child(2) {
+      transform: rotate(180deg);
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: var(--card-border-color);
+      animation: animate 3s linear infinite;
+    }
+  }
+
+  &:hover > &__border {
+    opacity: 1;
+  }
+
+  &:hover > &__cta {
+    text-decoration: underline;
+  }
+
+  &__cta {
+    font-family: $secondary-font;
+    color: $font-color;
+    font-size: #{fluid(14px, 17px)};
+  }
+  
+  &__hero {
+    height: 370px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 13px;
+
+    @include mobile-break {
+      height: 250px;
+    }
+    &-img {
+      max-height: 350px;
+      max-width: 100%;
+      width: auto;
+      height: fit-content;
+
+      @include mobile-break {
+        max-height: 240px;
+      }
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: #{fluid(8px, 13px)};
+  }
+
+  &__title {
+    font-family: $main-font;
+    font-size: #{fluid(22px, 30px)};
+    color: $font-color;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+}
+@keyframes animate {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}

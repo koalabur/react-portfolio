@@ -1,0 +1,37 @@
+.tech {
+  font-family: $main-font;
+  font-weight: 700;
+  background: $font-color;
+  color: $faded-purple;
+  padding: 6px 12px;
+  font-size: #{fluid(13px, 19px)};
+
+  &--contentful {
+    background: #67b3ff;
+    color: #29303a;
+  }
+  &--ecomm {
+    background: #d94a3d;
+    color: #efe205;
+  }
+  &--gsap {
+    background: #88ce02;
+    color: #ffffff;
+  }
+  &--react {
+    background: $react-blue;
+    color: $react-grey;
+  }
+  &--storyblok {
+    background: #00b3b0;
+    color: #fff;
+  }
+  &--vue {
+    background: $vue-blue;
+    color: $vue-green;
+  }
+  &--wordpress {
+    background: $wordpress-blue;
+    color: #f2f2f1;
+  }
+}

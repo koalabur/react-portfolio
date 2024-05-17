@@ -1,0 +1,27 @@
+.modal-link {
+  background: $font-color;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-family: '__IBM_Plex_Sans_392bc3', arial, '__IBM_Plex_Sans_Fallback_392bc3';
+  color: $purple;
+  font-size: #{fluid(16px, 25px)};
+  padding: 6px 14px;
+  border-radius: 10px;
+  gap: #{fluid(10px, 15px)};
+  transition: .2s ease-in-out;
+  border: 2px solid transparent;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: -3px 6px 0px $font-color;
+    border-color: #31265b;
+  }
+  &__icon {
+    width: #{fluid(20px, 26px)};
+    min-width: #{fluid(20px, 26px)};
+    height: #{fluid(20px, 26px)};
+    min-height: #{fluid(20px, 26px)};
+  }
+}
