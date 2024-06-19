@@ -6,6 +6,8 @@ export default function PrejectsView({ tech }) {
     switch (tech) {
       case "Contentful":
         return `${styles.tech} ${styles["tech--contentful"]}`;
+      case "D3.js":
+        return `${styles.tech} ${styles["tech--d3"]}`;
       case "Ecomm":
         return `${styles.tech} ${styles["tech--ecomm"]}`;
       case "GSAP":

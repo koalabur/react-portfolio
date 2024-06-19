@@ -2,13 +2,17 @@
   font-family: $main-font;
   font-weight: 700;
   background: $font-color;
-  color: $faded-purple;
+  color: $purple;
   padding: 6px 12px;
   font-size: #{fluid(13px, 19px)};
 
   &--contentful {
     background: #67b3ff;
     color: #29303a;
+  }
+  &--d3 {
+    background: #ef7234;
+    color: #ededed;
   }
   &--ecomm {
     background: #d94a3d;
